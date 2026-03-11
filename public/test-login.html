@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Admin Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f3f4f6;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #1e293b; margin-top: 0; }
+        .info { background: #dbeafe; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .credentials { background: #fef3c7; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #1e293b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 10px 10px 0;
+            font-weight: bold;
+        }
+        .btn:hover { background: #0f172a; }
+        .btn-success { background: #22c55e; }
+        .btn-success:hover { background: #16a34a; }
+        code {
+            background: #e5e7eb;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .status { padding: 10px; border-radius: 5px; margin: 10px 0; }
+        .status.ok { background: #d1fae5; color: #065f46; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🔐 Test Admin Login</h1>
+        
+        <div class="status ok">
+            ✅ Admin account sudah dibuat dan siap digunakan!
+        </div>
+
+        <div class="credentials">
+            <h3>📋 Kredensial Login:</h3>
+            <p><strong>Email:</strong> <code>admin@gmail.com</code></p>
+            <p><strong>Password:</strong> <code>admin123</code></p>
+        </div>
+
+        <div class="info">
+            <h3>🚀 Langkah Testing:</h3>
+            <ol>
+                <li>Klik tombol "Buka Admin Login" di bawah</li>
+                <li>Masukkan email dan password di atas</li>
+                <li>Klik tombol Login</li>
+                <li>Anda akan masuk ke Dashboard Admin</li>
+            </ol>
+        </div>
+
+        <a href="/admin/login" class="btn">🔓 Buka Admin Login</a>
+        <a href="/admin/dashboard" class="btn btn-success">📊 Dashboard (Perlu Login)</a>
+
+        <hr style="margin: 30px 0;">
+
+        <h3>📝 Informasi Tambahan:</h3>
+        <ul>
+            <li><strong>Login Page:</strong> <code>/admin/login</code></li>
+            <li><strong>Dashboard:</strong> <code>/admin/dashboard</code></li>
+            <li><strong>Data Lapangan:</strong> <code>/admin/lapangan</code></li>
+            <li><strong>Data Pesanan:</strong> <code>/admin/pesanan</code></li>
+            <li><strong>Data Admin:</strong> <code>/admin/admins</code></li>
+        </ul>
+
+        <div class="info" style="margin-top: 20px;">
+            <strong>💡 Tips:</strong> Jika login gagal, pastikan:
+            <ul>
+                <li>XAMPP MySQL sedang berjalan</li>
+                <li>Database sudah di-migrate</li>
+                <li>Admin seeder sudah dijalankan</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
