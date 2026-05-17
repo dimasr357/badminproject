@@ -259,4 +259,29 @@ Route::prefix('admin')->group(function () {
             abort(404, 'Gagal mendownload file: ' . $e->getMessage());
         }
     })->name('admin.booking.download');
+
+    // Cetak struk pembayaran (PDF Download)
+    Route::get('/booking/{id}/receipt', function (\Illuminate\Http\Request $request, $id) {
+        if (!session('admin_id')) {
+            return redirect('/admin/login');
+        }
+        try {
+            $booking = \App\Models\Booking::with(['user', 'lapangan'])->findOrFail($id);
+            
+            if ($booking->status !== 'bayar') {
+                return redirect()->back()->with('error', 'Struk hanya dapat dicetak untuk booking yang sudah dibayar.');
+            }
+
+            // Generate PDF
+            $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.receipt_pdf', compact('booking'))
+                ->setPaper([0, 0, 226.77, 450], 'portrait'); // 80mm width, 450pt height (~160mm)
+
+            $filename = 'Struk_' . ($booking->user->name ?? 'User') . '_' . $booking->id . '.pdf';
+            $filename = preg_replace('/[^a-zA-Z0-9._-]/', '_', $filename);
+
+            return $pdf->download($filename);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal membuat PDF: ' . $e->getMessage());
+        }
+    })->name('admin.booking.receipt');
 });

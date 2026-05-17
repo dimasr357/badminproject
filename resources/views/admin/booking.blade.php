@@ -513,11 +513,7 @@
                                             $exists2 = $path2 && \Illuminate\Support\Facades\Storage::disk('public')->exists($path2);
                                         @endphp
                                         @if($booking->status === 'bayar')
-                                            @if($exists2)
-                                                <a href="{{ route('admin.booking.download', $booking->id) }}" class="btn btn-download">Download</a>
-                                            @else
-                                                <button class="btn btn-download" disabled title="Bukti belum tersedia">Download</button>
-                                            @endif
+                                            <a href="{{ route('admin.booking.receipt', $booking->id) }}" class="btn btn-download">Download</a>
                                         @endif
                                         @if($booking->status !== 'bayar')
                                             <form action="{{ url('/admin/booking/' . $booking->id . '/confirm') }}" method="POST" style="display:inline;">

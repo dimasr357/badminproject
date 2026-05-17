@@ -120,22 +120,42 @@
 
                     <div class="form-group">
                         <label class="form-label">Metode Pembayaran</label>
-                        <div style="display:grid; grid-template-columns:1fr; gap:0.75rem;">
-                            <label class="payment-method selected">
-                                <div style="display:flex; align-items:center; gap:0.75rem;">
-                                    <input type="radio" name="payment_method" value="bri" checked>
-                                    <div>
-                                        <div style="font-weight:600;">Transfer Bank (BRI)</div>
-                                        <div class="muted">ATM / Mobile Banking</div>
+                        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                            <div>
+                                <label class="payment-method selected" id="label-bri" style="display:block;">
+                                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                                        <input type="radio" name="payment_method" value="bri" checked onchange="togglePayment('bri')">
+                                        <div style="display:flex; align-items:center; gap:0.5rem;">
+                                            <img src="{{ asset('images/bri.png') }}" alt="BRI" style="height:20px;">
+                                            <div>
+                                                <div style="font-weight:600;">Transfer Bank (BRI)</div>
+                                                <div class="muted">ATM / Mobile Banking</div>
+                                            </div>
+                                        </div>
                                     </div>
+                                </label>
+                                <div id="bankDetails" class="info-box" style="margin-top:0.5rem;">
+                                    Transfer ke: <strong>BRI 0892322132</strong> a/n <strong>Sport Center</strong>
                                 </div>
-                            </label>
-                            
-                        </div>
-                    </div>
+                            </div>
 
-                    <div id="bankDetails" class="info-box" style="margin-bottom:1rem;">
-                        Transfer ke: <strong>BRI 0892322132</strong> a/n <strong>Sport Center</strong>
+                            <div>
+                                <label class="payment-method" id="label-qris" style="display:block;">
+                                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                                        <input type="radio" name="payment_method" value="qris" onchange="togglePayment('qris')">
+                                        <div>
+                                            <div style="font-weight:600;">QRIS</div>
+                                            <div class="muted">Gopay, OVO, Dana, LinkAja</div>
+                                        </div>
+                                    </div>
+                                </label>
+                                <div id="qrisDetails" class="info-box hidden" style="margin-top:0.5rem; text-align:center;">
+                                    <div style="margin-bottom:0.5rem;">Scan QRIS di bawah ini:</div>
+                                    <img src="{{ asset('images/Qris_Booking.jpeg') }}" alt="QRIS Booking" style="max-width:200px; border-radius:8px; border:1px solid #e5e7eb;">
+                                    <div style="margin-top:0.5rem; font-weight:600;">Badminton Sport Center</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
 
@@ -155,10 +175,26 @@
     </div>
 
     <script>
-        // Hanya BRI: tampilkan detail bank dan wajib unggah bukti
-        document.addEventListener('DOMContentLoaded', function(){
+        function togglePayment(method) {
             const bankDetails = document.getElementById('bankDetails');
-            if (bankDetails) bankDetails.classList.remove('hidden');
+            const qrisDetails = document.getElementById('qrisDetails');
+            const labelBri = document.getElementById('label-bri');
+            const labelQris = document.getElementById('label-qris');
+
+            if (method === 'bri') {
+                bankDetails.classList.remove('hidden');
+                qrisDetails.classList.add('hidden');
+                labelBri.classList.add('selected');
+                labelQris.classList.remove('selected');
+            } else {
+                bankDetails.classList.add('hidden');
+                qrisDetails.classList.remove('hidden');
+                labelBri.classList.remove('selected');
+                labelQris.classList.add('selected');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function(){
             const proof = document.getElementById('payment_proof');
             if (proof) proof.required = true;
         });

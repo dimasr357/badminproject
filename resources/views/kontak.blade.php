@@ -400,7 +400,7 @@
                             </div>
                             <div class="contact-details">
                                 <h4>Telepon</h4>
-                                <p>+62 8779 9999 9999</p>
+                                <p>+62 831-6981-4681</p>
                             </div>
                         </div>
 
@@ -505,8 +505,8 @@
             // Create WhatsApp message
             const message = `Halo! Saya ${nama} ingin menghubungi Badminton Sport Center.\n\nEmail: ${email}\nTelepon: ${telepon}\n\nPesan:\n${pesan}`;
             
-            // WhatsApp API URL
-            const whatsappUrl = `https://wa.me/123232223232323?text=${encodeURIComponent(message)}`;
+            // WhatsApp API URL (6283169814681)
+            const whatsappUrl = `https://wa.me/6283169814681?text=${encodeURIComponent(message)}`;
             
             // Open WhatsApp
             window.open(whatsappUrl, '_blank');

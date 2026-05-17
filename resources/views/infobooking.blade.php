@@ -542,34 +542,39 @@
 
                     <div class="form-group" style="margin-bottom:1rem;">
                         <label class="form-label" style="display:block; font-weight:600; margin-bottom:0.5rem; color:#333;">Metode Pembayaran</label>
-                        <div style="display:grid; gap:0.75rem;">
-                            <label class="payment-method" style="border:1px solid #e5e7eb; border-radius:8px; padding:0.75rem; cursor:pointer;">
-                                <div style="display:flex; align-items:center; gap:0.75rem;">
-                                    <input type="radio" name="payment_method" value="bri" checked>
-                                    <div>
-                                        <div style="font-weight:600;">Transfer Bank (BRI)</div>
-                                        <div style="font-size:0.9rem; color:#6b7280;">ATM / Mobile Banking</div>
+                        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                            <div>
+                                <label class="payment-method" style="border:1px solid #e5e7eb; border-radius:8px; padding:0.75rem; cursor:pointer; display:block;">
+                                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                                        <input type="radio" name="payment_method" value="bri" checked>
+                                        <div>
+                                            <div style="font-weight:600;">Transfer Bank (BRI)</div>
+                                            <div style="font-size:0.9rem; color:#6b7280;">ATM / Mobile Banking</div>
+                                        </div>
                                     </div>
+                                </label>
+                                <div id="bankDetails" class="info-box" style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:1rem; margin-top:0.5rem;">
+                                    Transfer ke: <strong>BRI 0892322132</strong> a/n <strong>Sport Center</strong>
                                 </div>
-                            </label>
-                            <label class="payment-method" style="border:1px solid #e5e7eb; border-radius:8px; padding:0.75rem; cursor:pointer;">
-                                <div style="display:flex; align-items:center; gap:0.75rem;">
-                                    <input type="radio" name="payment_method" value="qris">
-                                    <div>
-                                        <div style="font-weight:600;">QRIS</div>
-                                        <div style="font-size:0.9rem; color:#6b7280;">Scan QRIS untuk bayar</div>
-                                    </div>
-                                </div>
-                            </label>
-                            
-                        </div>
-                    </div>
+                            </div>
 
-                    <div id="bankDetails" class="info-box" style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:1rem; margin-bottom:1rem;">
-                        Transfer ke: <strong>BRI 0892322132</strong> a/n <strong>Sport Center</strong>
-                    </div>
-                    <div id="qrisDetails" class="info-box" style="display:none; background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:1rem; margin-bottom:1rem;">
-                        Silakan scan QRIS berikut dan unggah bukti pembayaran.
+                            <div>
+                                <label class="payment-method" style="border:1px solid #e5e7eb; border-radius:8px; padding:0.75rem; cursor:pointer; display:block;">
+                                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                                        <input type="radio" name="payment_method" value="qris">
+                                        <div>
+                                            <div style="font-weight:600;">QRIS</div>
+                                            <div style="font-size:0.9rem; color:#6b7280;">Scan QRIS untuk bayar</div>
+                                        </div>
+                                    </div>
+                                </label>
+                                <div id="qrisDetails" class="info-box" style="display:none; background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:1rem; margin-top:0.5rem; text-align:center;">
+                                    <div style="margin-bottom:0.5rem;">Silakan scan QRIS berikut dan unggah bukti pembayaran.</div>
+                                    <img src="{{ asset('images/Qris_Booking.jpeg') }}" alt="QRIS Booking" style="max-width:200px; border-radius:8px; border:1px solid #e5e7eb;">
+                                    <div style="margin-top:0.5rem; font-weight:600;">Badminton Sport Center</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
 
